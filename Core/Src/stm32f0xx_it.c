@@ -149,22 +149,11 @@ void TIM1_BRK_UP_TRG_COM_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM1_BRK_UP_TRG_COM_IRQn 0 */
   if(__HAL_TIM_GET_FLAG(&htim1, TIM_FLAG_TRIGGER)) {
-	    htim15.Instance->CNT = 125;
+	    htim15.Instance->CNT = 500;
 	    htim16.Instance->CNT = 500;
 		htim15.Instance->CR1|= TIM_CR1_CEN;
 		htim16.Instance->CR1|= TIM_CR1_CEN;
 	    __HAL_TIM_CLEAR_FLAG(&htim1, TIM_FLAG_TRIGGER);
-
-	  //  HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_1);
-	 //   HAL_TIM_PWM_Stop(&htim15, TIM_CHANNEL_2);
-	 //   htim3.Instance->CNT = 0;
-	 //   htim15.Instance->CNT = 0;
-	    //HAL_TIM_Base_Start_IT(&htim3);
-	   // HAL_TIM_Base_Start_IT(&htim15);
-	   // HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-	   // HAL_TIM_PWM_Start(&htim15, TIM_CHANNEL_2);
-	   // HAL_TIM_OnePulse_Start_IT(&htim3, TIM_CHANNEL_1);
-	   // HAL_TIM_OnePulse_Start_IT(&htim15, TIM_CHANNEL_2);
 
 
 	    HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_8);  // Toggle LED on trigger
